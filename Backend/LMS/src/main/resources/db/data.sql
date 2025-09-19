@@ -1,3 +1,10 @@
+INSERT INTO users (first_name, last_name, phone, email, created_at) VALUES
+                                                                        ('John', 'Doe', '1234567890', 'john.doe@example.com', NOW()),
+                                                                        ('Jane', 'Smith', '0987654321', 'jane.smith@example.com', NOW()),
+                                                                        ('Peter', 'Jones', '5551112222', 'peter.jones@example.com', NOW()),
+                                                                        ('Mary', 'Brown', '3334445555', 'mary.brown@example.com', NOW()),
+                                                                        ('Robert', 'Wilson', '6667778888', 'robert.wilson@example.com', NOW());
+
 INSERT INTO books (name, author, category, isbn, book_copies) VALUES
                                                                   ('Clean Code', 'Robert C. Martin', 'Programming', 'ISBN100001', 5),
                                                                   ('Effective Java', 'Joshua Bloch', 'Programming', 'ISBN100002', 4),
