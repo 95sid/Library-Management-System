@@ -166,7 +166,8 @@ spring.sql.init.data-locations=classpath:db/data.sql
     ```
   * **`backend/src/main/resources/db/schema.sql`**: This file documents the database schema and is for reference only. Spring will create the schema automatically based on your JPA entities.
   * **`backend/src/main/resources/db/data.sql`**: This script contains initial data for the bookstore and will be executed automatically on application startup.
-
+   
+  ![Alt text](TableRelation.jpg)
 -----
 
 ## 🛠️ Postman / Curl Examples
