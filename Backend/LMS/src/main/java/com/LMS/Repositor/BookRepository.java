@@ -1,4 +1,4 @@
-package com.LMS.Repository;
+package com.LMS.Repositor;
 
 import com.LMS.Entity.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +18,4 @@ public interface BookRepository extends JpaRepository<BookEntity,Long> {
             "   OR LOWER(b.category) LIKE LOWER(CONCAT('%', :searchText, '%'))")
     List<BookEntity> searchBooks(@Param("searchText") String searchText);
     Optional<BookEntity> findByIsbn(String isbn);
-    boolean existsByIsbn(String isbn);
 }

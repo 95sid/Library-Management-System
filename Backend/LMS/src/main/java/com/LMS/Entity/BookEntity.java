@@ -32,7 +32,6 @@ public class BookEntity {
     @Column(nullable=false,unique = true,length = 20)
     private String isbn;
 
-    // defualt number of copies is 0
     @Column(nullable=false)
     private Integer book_copies = 0;
 

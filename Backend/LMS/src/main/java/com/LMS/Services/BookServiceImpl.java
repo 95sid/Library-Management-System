@@ -2,8 +2,7 @@ package com.LMS.Services;
 
 import com.LMS.DTOs.BookDTO;
 import com.LMS.Entity.BookEntity;
-import com.LMS.Repository.BookLoanRepository;
-import com.LMS.Repository.BookRepository;
+import com.LMS.Repositor.BookRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

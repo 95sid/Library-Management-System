@@ -14,15 +14,15 @@ import java.util.List;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(BookNotAvailableExcepiton.class)
-    public ResponseEntity<ApiResponse<?>> handleBookNotAvailableExcepiton(BookNotAvailableExcepiton exception){
+    @ExceptionHandler(BookNotAvailableException.class)
+    public ResponseEntity<ApiResponse<?>> handleBookNotAvailableException(BookNotAvailableException exception){
         ApiError apiError = ApiError
                 .builder()
                 .message(exception.getMessage())
                 .status(HttpStatus.NOT_FOUND)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -41,18 +41,18 @@ public class GlobalExceptionHandler {
                 .errors(errors)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
-    @ExceptionHandler(BookNotFoundExcepiton.class)
-    public ResponseEntity<ApiResponse<?>> handleBookNotFoundExcepiton(BookNotFoundExcepiton exception){
+    @ExceptionHandler(BookNotFoundException.class)
+    public ResponseEntity<ApiResponse<?>> handleBookNotFoundException(BookNotFoundException exception){
         ApiError apiError = ApiError
                 .builder()
                 .message(exception.getMessage())
                 .status(HttpStatus.NOT_FOUND)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
     @ExceptionHandler(UserNotFoundExcetpion.class)
@@ -63,7 +63,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
     @ExceptionHandler(BookAlreadyReturnedException.class)
@@ -74,7 +74,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
     @ExceptionHandler(EmailDuplicateEntryException.class)
     public ResponseEntity<ApiResponse<?>> handleEmailDuplicateEntryException(EmailDuplicateEntryException exception){
@@ -84,7 +84,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
     @ExceptionHandler(PhoneDuplicateEntryException.class)
@@ -95,15 +95,9 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
-
-    /**
-    /**
-     * Handle optimistic locking / concurrent modification exceptions.
-     * Returns 409 CONFLICT so the client can retry if desired.
-     */
     @ExceptionHandler({ ObjectOptimisticLockingFailureException.class, OptimisticLockingFailureException.class })
     public ResponseEntity<ApiResponse<?>> handleOptimisticLocking(Exception ex) {
         ApiError apiError = ApiError
@@ -112,12 +106,9 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.CONFLICT)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
-    /**
-     * Generic fallback handler for any other unhandled exceptions.
-     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<?>> handleAllExceptions(Exception exception){
         ApiError apiError = ApiError
@@ -126,10 +117,10 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .build();
 
-        return handleApiReponse(apiError);
+        return handleApiResponse(apiError);
     }
 
-    ResponseEntity<ApiResponse<?>> handleApiReponse(ApiError apiError){
+    ResponseEntity<ApiResponse<?>> handleApiResponse(ApiError apiError){
         return new ResponseEntity<ApiResponse<?>>(new ApiResponse<>(apiError),apiError.getStatus());
     }
 }
